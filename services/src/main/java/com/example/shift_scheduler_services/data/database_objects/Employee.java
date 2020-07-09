@@ -1,9 +1,9 @@
 package com.example.shift_scheduler_services.data.database_objects;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
-import java.util.List;
+import javax.persistence.*;
 
+@Entity
+@Table(name = "employee")
 public class Employee {
     @Id
     @Column(name = "id")
@@ -11,12 +11,16 @@ public class Employee {
 
     @Column(name = "name")
     String name;
-    
+
+    @ManyToOne
+    @JoinColumn(name = "job_location_id")
     JobLocation jobLocation;
 
+    @ManyToOne
+    @JoinColumn(name = "position_id")
     Position position;
 
-    List<Shift> shifts;
+//    List<Shift> shifts;
 
     public int getId() {
         return id;
@@ -50,11 +54,11 @@ public class Employee {
         this.position = position;
     }
 
-    public List<Shift> getShifts() {
-        return shifts;
-    }
-
-    public void setShifts(List<Shift> shifts) {
-        this.shifts = shifts;
-    }
+//    public List<Shift> getShifts() {
+//        return shifts;
+//    }
+//
+//    public void setShifts(List<Shift> shifts) {
+//        this.shifts = shifts;
+//    }
 }

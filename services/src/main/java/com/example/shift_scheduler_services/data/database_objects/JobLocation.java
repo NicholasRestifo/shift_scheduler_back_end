@@ -1,8 +1,18 @@
 package com.example.shift_scheduler_services.data.database_objects;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "job_location")
 public class JobLocation {
+    @Id
+    @Column(name = "id")
     int id;
 
+    @Column(name = "name")
     String name;
 
     public int getId() {

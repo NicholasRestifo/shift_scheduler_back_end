@@ -1,22 +1,33 @@
 package com.example.shift_scheduler_services.data.database_objects;
 
+import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.List;
 
+@Entity
+@Table(name = "shift")
 public class Shift {
+    @Id
+    @Column(name = "id")
     int id;
 
+    @ManyToOne
+    @JoinColumn(name = "job_location_id")
     JobLocation jobLocation;
 
+    @ManyToOne
+    @JoinColumn(name = "position_id")
     Position position;
 
+    @Column(name = "start_time")
     LocalDateTime startTime;
 
+    @Column(name = "end_time")
     LocalDateTime endTime;
 
+    @Column(name = "max_employees")
     int maxEmployees;
 
-    List<Employee> employees;
+//    List<Employee> employees;
 
     public int getId() {
         return id;
@@ -66,11 +77,11 @@ public class Shift {
         this.maxEmployees = maxEmployees;
     }
 
-    public List<Employee> getEmployees() {
-        return employees;
-    }
-
-    public void setEmployees(List<Employee> employees) {
-        this.employees = employees;
-    }
+//    public List<Employee> getEmployees() {
+//        return employees;
+//    }
+//
+//    public void setEmployees(List<Employee> employees) {
+//        this.employees = employees;
+//    }
 }
